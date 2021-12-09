@@ -1,6 +1,6 @@
 import re
 import time
-from model import NgramLanguageModel
+from model import NgramNnlm
 
 
 class Correcter:
@@ -61,7 +61,7 @@ class Correcter:
 if __name__ == '__main__':
     corpus = open('./data/tech_corpus.txt', encoding='utf8').readlines()
     corpus = [re.sub(r'\u3000|\n', '', text) for text in corpus]  # 去除中文跟结尾换行符
-    lm = NgramLanguageModel(corpus, 3)
+    lm = NgramNnlm(corpus, 3)
     cor = Correcter(lm)
     raw_sentences = ['科技部召开的哪部会议传出消息',
                      '小米手机现在好像卖的比较鬼了',

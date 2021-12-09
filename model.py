@@ -3,7 +3,7 @@ import re
 from collections import defaultdict
 
 
-class NgramLanguageModel:
+class NgramNnlm:
     def __init__(self, corpus=None, n=3):
         self.n = n
         self.unk_pb = 1e-4  # 给未知词设置个低概率免得概率连乘为0
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     corpus = open('./data/tech_corpus.txt', encoding='utf8').readlines()
     corpus = [re.sub(r'\u3000|\n', '', text) for text in corpus]  # 去除中文跟结尾换行符
 
-    lm = NgramLanguageModel(corpus, 3)
+    lm = NgramNnlm(corpus, 3)
     sentence1 = '中国联通向全国推出薪固定电话'
     sentence2 = '中国联通向全国推出新固定电话'
     print(lm.predict(sentence1))
